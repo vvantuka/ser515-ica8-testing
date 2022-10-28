@@ -22,7 +22,7 @@ of the function.
 4) **writeFile** - writes the results obtained into a text file.
 5) **goodString** - Counts the maximum number of free urinals present according to the unwritten rule.
 
-###Unit Tests - 
+### Unit Tests - 
 - **Test 1** - demo test checks true
 - **Test 2** - happyPath for goodString function
 - **Test 3** - badPath for goodString function
