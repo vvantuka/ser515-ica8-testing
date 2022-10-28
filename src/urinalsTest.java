@@ -70,6 +70,15 @@ public class urinalsTest {
     }
 
     @Test
+    void testreadFile_badPath_empty_file() throws IOException{
+        System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
+        String filePath = new File("").getAbsolutePath();
+        ArrayList<String> ar_test = new ArrayList<>();
+
+        assertEquals(urinal.readFile(filePath + "/test_files/dummy_empty_file.dat"), ar_test);
+    }
+
+    @Test
     void testWriteFile_happyPath(@TempDir Path directory) throws IOException {
         System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
         String filePath = new File("").getAbsolutePath();
