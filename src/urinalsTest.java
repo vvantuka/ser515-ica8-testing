@@ -64,9 +64,15 @@ public class urinalsTest {
     }
 
     @Test
+    void testreadFile_badPath_throws_FileNotFoundException(){
+        System.out.println("=====Vishnu Vantukala == TEST SEVEN EXECUTED=====");
+        assertThrows(FileNotFoundException.class, () -> urinal.readFile("non-existent-file"));
+    }
+
+    @Test
     void testreadFile_badPath_throws_IOException(){
         System.out.println("=====Vishnu Vantukala == TEST SEVEN EXECUTED=====");
-        assertThrows(IOException.class, () -> urinal.readFile("non-existent-file"));
+        assertThrows(IOException.class, () -> urinal.readFile(""));
     }
 
     @Test

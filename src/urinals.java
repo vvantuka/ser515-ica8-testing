@@ -113,6 +113,8 @@ public class urinals {
                 System.out.println(st);
                 ar.add(st);
             }
+        } catch (FileNotFoundException fe) {
+          throw new FileNotFoundException();
         } catch ( IOException e) {
             throw new IOException();
         }
