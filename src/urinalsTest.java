@@ -70,4 +70,20 @@ public class urinalsTest {
         assertThrows(IOException.class, () -> urinal.readFile("non-existent-file"));
     }
 
+    @Test
+    void testWriteFile_happyPath(@TempDir Path directory) throws IOException {
+        System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
+        String filePath = new File("").getAbsolutePath();
+        File file = new File(directory + "/dummy_file_to_write.txt");
+        urinal.writeFile("dummy_value", file);
+
+        assertTrue(file.exists());
+    }
+
+    @Test
+    void testWriteFile_badPath_throws_NULLPointerException(){
+        System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
+        File file = null;
+        assertThrows(NullPointerException.class, () -> urinal.writeFile("dummy_text_to_write", file));
+    }
 }
