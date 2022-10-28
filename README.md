@@ -29,6 +29,9 @@ of the function.
 - **Test 4** - happyPath for checkString function
 - **Test 5** - badPath for checkString function
 - **Test 6** - happyPath for readFile function
-- **Test 7** - readFile function throws IOException
-- **Test 8** - happyPath for writeFile function
-- **Test 9** - writeFile function throws NULLPointerException
+- **Test 7** - readFile function throws FileNotFoundException
+- **Test 8** - readFile function throws IOException
+- **Test 9** - readFile function test case on empty file
+- **Test 10** - happyPath for writeFile function
+- **Test 11** - writeFile function throws NULLPointerException
+- **Test 12** - writeFile function tested when file has duplicate

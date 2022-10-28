@@ -71,13 +71,13 @@ public class urinalsTest {
 
     @Test
     void testreadFile_badPath_throws_IOException(){
-        System.out.println("=====Vishnu Vantukala == TEST SEVEN EXECUTED=====");
+        System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
         assertThrows(IOException.class, () -> urinal.readFile(""));
     }
 
     @Test
     void testreadFile_badPath_empty_file() throws IOException{
-        System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
+        System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
         String filePath = new File("").getAbsolutePath();
         ArrayList<String> ar_test = new ArrayList<>();
 
@@ -85,8 +85,8 @@ public class urinalsTest {
     }
 
     @Test
-    void testWriteFile_happyPath(@TempDir Path directory) throws IOException {
-        System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
+    void testWriteFile_happyPath(@TempDir Path directory){
+        System.out.println("=====Vishnu Vantukala == TEST TEN EXECUTED=====");
         File file = new File(directory + "/dummy_file_to_write.txt");
         urinal.writeFile("dummy_value", file);
 
@@ -95,14 +95,14 @@ public class urinalsTest {
 
     @Test
     void testWriteFile_badPath_throws_NULLPointerException(){
-        System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
+        System.out.println("=====Vishnu Vantukala == TEST ELEVEN EXECUTED=====");
         File file = null;
         assertThrows(NullPointerException.class, () -> urinal.writeFile("dummy_text_to_write", file));
     }
 
     @Test
     void testWriteFile_badPath_file_is_duplicate(){
-        System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
+        System.out.println("=====Vishnu Vantukala == TEST TWELVE EXECUTED=====");
         File file = new File(directory + "/dummy_file_to_write.txt");
         urinal.writeFile("dummy_value", file);
 

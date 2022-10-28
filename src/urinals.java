@@ -128,7 +128,6 @@ public class urinals {
             fr.close();
         } catch ( IOException e) {
             System.out.println("FileNotFound");
-            e.printStackTrace();
         }
     }
 }
