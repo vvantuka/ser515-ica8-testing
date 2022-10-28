@@ -10,7 +10,13 @@ import java.util.*;
 public class urinals {
     public static void main(String[] args){
             String filePath = new File("").getAbsolutePath();
-            ArrayList<String> str = readFile(filePath + "/test_files/urinal.dat");
+            ArrayList<String> str;
+            try {
+                str = readFile(filePath + "/test_files/urinal.dat");
+            } catch (IOException e){
+                System.out.println("File not found. Exiting...");
+                return;
+            }
 
             File file = new File(filePath + "/test_files/rule.txt");
             int count = 1;
@@ -97,7 +103,7 @@ public class urinals {
         return true;
     }
 
-    public static ArrayList<String> readFile(String fileName){
+    public static ArrayList<String> readFile(String fileName) throws IOException{
         File file = new File(fileName);
         ArrayList<String> ar = new ArrayList<String>();
         try{
@@ -108,7 +114,7 @@ public class urinals {
                 ar.add(st);
             }
         } catch ( IOException e) {
-            e.printStackTrace();
+            throw new IOException();
         }
         return ar;
     }
@@ -119,6 +125,7 @@ public class urinals {
             fr.write(str + '\n');
             fr.close();
         } catch ( IOException e) {
+            System.out.println("FileNotFound");
             e.printStackTrace();
         }
     }

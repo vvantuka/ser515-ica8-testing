@@ -1,13 +1,15 @@
 package src;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Path;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class urinalsTest {
@@ -49,5 +51,23 @@ public class urinalsTest {
         String str = "abcdef010";
         assertEquals(urinal.checkString(str), false);
     }
-    
+
+    @Test
+    void testreadFile_happyPath() throws IOException{
+        System.out.println("=====Vishnu Vantukala == TEST SIX EXECUTED=====");
+        String filePath = new File("").getAbsolutePath();
+
+        ArrayList<String> ar_test = new ArrayList<>();
+        ar_test.add("dummy_value_in_file");
+
+        assertEquals(urinal.readFile(filePath + "/test_files/dummy_file_for_junit.dat"), ar_test);
+
+    }
+
+    @Test
+    void testreadFile_badPath_throws_IOException(){
+        System.out.println("=====Vishnu Vantukala == TEST SEVEN EXECUTED=====");
+        assertThrows(IOException.class, () -> urinal.readFile("non-existent-file"));
+    }
+
 }
