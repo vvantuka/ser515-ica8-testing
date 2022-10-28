@@ -1,6 +1,7 @@
 package src;
 
 import java.io.*;
+import java.util.*;
 
 // Author : Vishnu Vantukala
 // Date : 10/27/2022
@@ -8,42 +9,42 @@ import java.io.*;
 
 public class urinals {
     public static void main(String[] args){
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Enter the input string:");
-            String inp = br.readLine();
+            String filePath = new File("").getAbsolutePath();
+            ArrayList<String> str = readFile(filePath + "/test_files/urinal.dat");
 
-            if(!checkString(inp)){
-                System.out.println("Input string should have only 0s and 1s.\n Exiting..."); return;
+            File file = new File(filePath + "/test_files/rule.txt");
+            int count = 1;
+            while(file.exists()){
+                file = new File(filePath + "/test_files/rule" + count + ".txt");
+                count+=1;
             }
 
-            boolean validString = goodString(inp);
-            if (validString) {
-                System.out.println("The given string is a valid String");
-            } else{
-                System.out.println("The given string is an invalid String");
-            }
+            for(int i=0;i<str.size();i++) {
+                String inp = str.get(i);
+                if (!checkString(inp)) {
+                    System.out.println("Input string should have only 0s and 1s.\n Exiting...");
+                    return;
+                }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                boolean validString = goodString(inp, file);
+            }
     }
 
-    public static Boolean goodString(String inp){
+    public static Boolean goodString(String inp, File file){
         int count=0;
         int tot_count=0;
-        boolean flag=false;
         int i=0;
         while(i<inp.length() && inp.charAt(i)=='0'){
             count++;i++;
         }
         if(i==inp.length() && inp.length()%2==1){
             tot_count = (count+1)/2;
-            System.out.println(tot_count);return true;
+            System.out.println(tot_count);
+            writeFile(String.valueOf(tot_count), file);return true;
         } else if(i==inp.length() && inp.length()%2==0) {
             tot_count = (count)/2;
-            System.out.print(tot_count); return true;
+            System.out.println(tot_count);
+            writeFile(String.valueOf(tot_count), file);return true;
         }else if(count%2==0){
             tot_count = (count) / 2;
         }else{
@@ -70,7 +71,8 @@ public class urinals {
                 while (i < inp.length() && inp.charAt(i) == '1') {
                     count1 += 1;i++;
                     if (count1 > 1) {
-                        System.out.println(-1);return false;
+                        System.out.println(-1);
+                        writeFile(String.valueOf(-1), file);return false;
                     }
                 }
             }
@@ -82,6 +84,7 @@ public class urinals {
         }
 
         System.out.println(tot_count);
+        writeFile(String.valueOf(tot_count), file);
         return true;
     }
 
@@ -92,5 +95,31 @@ public class urinals {
             }
         }
         return true;
+    }
+
+    public static ArrayList<String> readFile(String fileName){
+        File file = new File(fileName);
+        ArrayList<String> ar = new ArrayList<String>();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            while((st = br.readLine()) != null){
+                System.out.println(st);
+                ar.add(st);
+            }
+        } catch ( IOException e) {
+            e.printStackTrace();
+        }
+        return ar;
+    }
+
+    public static void writeFile(String str, File file){
+        try{
+            FileWriter fr = new FileWriter(file, true);
+            fr.write(str + '\n');
+            fr.close();
+        } catch ( IOException e) {
+            e.printStackTrace();
+        }
     }
 }
