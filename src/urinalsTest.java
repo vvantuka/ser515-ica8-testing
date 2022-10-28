@@ -35,4 +35,19 @@ public class urinalsTest {
         String str = "10011";
         assertEquals(urinal.goodString(str, new File(directory + "/dummy")), false);
     }
+
+    @Test
+    void testCheckString_happyPath(){
+        System.out.println("=====Vishnu Vantukala == TEST FOUR EXECUTED=====");
+        String str = "10001001";
+        assertEquals(urinal.checkString(str), true);
+    }
+
+    @Test
+    void testCheckString_badPath(){
+        System.out.println("=====Vishnu Vantukala == TEST FIVE EXECUTED=====");
+        String str = "abcdef010";
+        assertEquals(urinal.checkString(str), false);
+    }
+    
 }
