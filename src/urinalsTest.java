@@ -87,7 +87,6 @@ public class urinalsTest {
     @Test
     void testWriteFile_happyPath(@TempDir Path directory) throws IOException {
         System.out.println("=====Vishnu Vantukala == TEST EIGHT EXECUTED=====");
-        String filePath = new File("").getAbsolutePath();
         File file = new File(directory + "/dummy_file_to_write.txt");
         urinal.writeFile("dummy_value", file);
 
@@ -99,5 +98,19 @@ public class urinalsTest {
         System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
         File file = null;
         assertThrows(NullPointerException.class, () -> urinal.writeFile("dummy_text_to_write", file));
+    }
+
+    @Test
+    void testWriteFile_badPath_file_is_duplicate(){
+        System.out.println("=====Vishnu Vantukala == TEST NINE EXECUTED=====");
+        File file = new File(directory + "/dummy_file_to_write.txt");
+        urinal.writeFile("dummy_value", file);
+
+        if(file.exists()){
+            file = new File(directory + "/dummy_file_to_write1.txt");
+            urinal.writeFile("dummy_value", file);
+        }
+
+        assertEquals(file.getName(), "dummy_file_to_write1.txt");
     }
 }
